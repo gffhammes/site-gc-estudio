@@ -1,6 +1,6 @@
 import { Box, Container, Stack } from '@mui/material';
 import React from 'react';
-import { ILogoProps, Logo } from './Logo';
+import { Logo } from './Logo';
 import { NavLinks } from './NavLinks';
 
 export const Header = () => {
@@ -12,7 +12,7 @@ export const Header = () => {
 					justifyContent="space-between"
 					alignItems="center"
 				>
-					{/* <Logo logo={logo} /> */}
+					<Logo />
 					<NavLinks />
 				</Stack>
 			</Container>
