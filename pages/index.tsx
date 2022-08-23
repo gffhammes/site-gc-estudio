@@ -52,7 +52,7 @@ export const getServerSideProps = async () => {
 	const heroData: IHeroData = {
 		h1: fetchedData.h1,
 		backgroundImageUrl: fetchedData.imagemFundo.data.attributes.url,
-		textoBotao: fetchedData.textoBotao,
+		buttonText: fetchedData.textoBotao,
 	};
 
 	const props = {

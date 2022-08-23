@@ -5,7 +5,10 @@ import { NavLinks } from './NavLinks';
 
 export const Header = () => {
 	return (
-		<Box component="header" sx={{ position: 'fixed', width: '100%' }}>
+		<Box
+			component="header"
+			sx={{ position: 'fixed', width: '100%', zIndex: 999 }}
+		>
 			<Container sx={{ py: 4 }}>
 				<Stack
 					direction="row"
