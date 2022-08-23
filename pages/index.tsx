@@ -1,15 +1,25 @@
 import { Box } from '@mui/material';
+import axios from 'axios';
 import type { NextPage } from 'next';
 import Head from 'next/head';
+import { AboutSection } from '../src/components/AboutSection/AboutSection';
 import { Header } from '../src/components/common/Header';
-import { HeroSection } from '../src/components/HeroSection/HeroSection';
+import {
+	HeroSection,
+	IHeroData,
+} from '../src/components/HeroSection/HeroSection';
 
 interface IHomeProps {
 	pageTitle: string;
 	pageDescription: string;
+	heroData: IHeroData;
 }
 
-const Home: NextPage<IHomeProps> = ({ pageTitle, pageDescription }) => {
+const Home: NextPage<IHomeProps> = ({
+	pageTitle,
+	pageDescription,
+	heroData,
+}) => {
 	return (
 		<Box sx={{ height: '100%', width: '100%' }}>
 			<Head>
@@ -20,21 +30,39 @@ const Home: NextPage<IHomeProps> = ({ pageTitle, pageDescription }) => {
 			<Header />
 
 			<Box component="main" sx={{ height: '100%', width: '100%' }}>
-				<HeroSection />
+				<HeroSection heroData={heroData} />
+				{/* <AboutSection /> */}
 			</Box>
 		</Box>
 	);
 };
 
-export const getServerSideProps = () => {
+export const getServerSideProps = async () => {
 	const pageTitle = 'GC Estúdio';
 	const pageDescription = 'Lorem ipsum';
 
+	const fetchedData = await axios
+		.get('https://gc-estudio.herokuapp.com/api/hero', {
+			params: {
+				populate: '*',
+			},
+		})
+		.then((res) => res.data.data.attributes);
+
+	const heroData: IHeroData = {
+		h1: fetchedData.h1,
+		backgroundImageUrl: fetchedData.imagemFundo.data.attributes.url,
+		textoBotao: fetchedData.textoBotao,
+	};
+
+	const props = {
+		pageTitle,
+		pageDescription,
+		heroData,
+	};
+
 	return {
-		props: {
-			pageTitle,
-			pageDescription,
-		},
+		props,
 	};
 };
 
