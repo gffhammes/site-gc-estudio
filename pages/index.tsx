@@ -31,7 +31,7 @@ const Home: NextPage<IHomeProps> = ({
 
 			<Box component="main" sx={{ height: '100%', width: '100%' }}>
 				<HeroSection heroData={heroData} />
-				{/* <AboutSection /> */}
+				<AboutSection />
 			</Box>
 		</Box>
 	);
