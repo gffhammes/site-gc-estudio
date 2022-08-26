@@ -8,6 +8,7 @@ import {
 	HeroSection,
 	IHeroData,
 } from '../src/components/HeroSection/HeroSection';
+import { ServicesSection } from '../src/components/ServicesSection/ServicesSection';
 
 interface IHomeProps {
 	pageTitle: string;
@@ -32,6 +33,7 @@ const Home: NextPage<IHomeProps> = ({
 			<Box component="main" sx={{ height: '100%', width: '100%' }}>
 				<HeroSection heroData={heroData} />
 				<AboutSection />
+				<ServicesSection />
 			</Box>
 		</Box>
 	);

@@ -15,7 +15,11 @@ export const TextWithIcon = ({
 }: ITextWithIconProps) => {
 	return (
 		<Box>
-			<Stack direction="row" alignItems="center" spacing={4}>
+			<Stack
+				direction={{ xs: 'column', sm: 'row' }}
+				alignItems={{ xs: 'flex-start', sm: 'center' }}
+				spacing={4}
+			>
 				<Box
 					sx={{ height: '55px', width: '55px', position: 'relative' }}
 				>

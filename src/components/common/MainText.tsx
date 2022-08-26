@@ -9,7 +9,7 @@ export interface IMainTextProps {
 export const MainText = ({ title, text }: IMainTextProps) => {
 	return (
 		<Box>
-			<Typography>{title}</Typography>
+			<Typography variant="h2">{title}</Typography>
 			<Typography>{text}</Typography>
 		</Box>
 	);
