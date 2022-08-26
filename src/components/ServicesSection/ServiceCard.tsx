@@ -13,7 +13,7 @@ export const ServiceCard = ({
 	data: { icon, title, text },
 }: IServiceCardProps) => {
 	return (
-		<Box>
+		<Box sx={{ backgroundColor: 'primary.main' }}>
 			<Box></Box>
 			<Typography>{title}</Typography>
 			<Typography>{text}</Typography>
