@@ -4,6 +4,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { AboutSection } from '../src/components/AboutSection/AboutSection';
 import { ClientsSection } from '../src/components/ClientsSection/ClientsSection';
+import { Footer } from '../src/components/common/Footer';
 import { Header } from '../src/components/common/Header';
 import { ContactSection } from '../src/components/ContactSection/ContactSection';
 import {
@@ -40,6 +41,7 @@ const Home: NextPage<IHomeProps> = ({
 				<ProjectsSection />
 				<ClientsSection />
 				<ContactSection />
+				<Footer />
 			</Box>
 		</Box>
 	);
