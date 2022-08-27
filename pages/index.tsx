@@ -3,11 +3,14 @@ import axios from 'axios';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { AboutSection } from '../src/components/AboutSection/AboutSection';
+import { ClientsSection } from '../src/components/ClientsSection/ClientsSection';
 import { Header } from '../src/components/common/Header';
+import { ContactSection } from '../src/components/ContactSection/ContactSection';
 import {
 	HeroSection,
 	IHeroData,
 } from '../src/components/HeroSection/HeroSection';
+import { ProjectsSection } from '../src/components/ProjectsSection/ProjectsSection';
 import { ServicesSection } from '../src/components/ServicesSection/ServicesSection';
 
 interface IHomeProps {
@@ -34,6 +37,9 @@ const Home: NextPage<IHomeProps> = ({
 				<HeroSection heroData={heroData} />
 				<AboutSection />
 				<ServicesSection />
+				<ProjectsSection />
+				<ClientsSection />
+				<ContactSection />
 			</Box>
 		</Box>
 	);

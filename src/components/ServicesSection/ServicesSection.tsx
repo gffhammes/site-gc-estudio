@@ -12,8 +12,6 @@ export const ServicesSection = () => {
 		},
 	});
 
-	console.log(data);
-
 	return (
 		<Box sx={{ py: defaultSectionPadding, backgroundColor: '#f4f4f4' }}>
 			<Container>
