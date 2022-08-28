@@ -7,6 +7,7 @@ import { Logo } from './Logo';
 export const Footer = () => {
 	return (
 		<Box
+			component="footer"
 			sx={{
 				backgroundColor: 'primary.main',
 				padding: defaultSectionPadding,

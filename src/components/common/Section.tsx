@@ -14,7 +14,11 @@ export const Section = ({
 	backgroundColor = '#fff',
 }: ISectionProps) => {
 	return (
-		<Box id={id} sx={{ py: defaultSectionPadding, backgroundColor }}>
+		<Box
+			component="section"
+			id={id}
+			sx={{ py: defaultSectionPadding, backgroundColor }}
+		>
 			<Container>{children}</Container>
 		</Box>
 	);

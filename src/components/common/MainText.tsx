@@ -6,11 +6,29 @@ export interface IMainTextProps {
 	text?: string;
 }
 
+const sxDash = {
+	height: '.4rem',
+	width: '3rem',
+	backgroundColor: 'secondary.main',
+	mb: 2,
+};
+
 export const MainText = ({ title, text }: IMainTextProps) => {
 	return (
 		<Box>
-			<Typography variant="h2">{title}</Typography>
-			{text && <Typography>{text}</Typography>}
+			<Box sx={sxDash} />
+			<Typography
+				gutterBottom
+				variant="h2"
+				fontSize={52}
+				fontWeight={600}
+				color="primary"
+			>
+				{title}
+			</Typography>
+			{text && (
+				<Typography color="rgb(37 52 93 / 60%)">{text}</Typography>
+			)}
 		</Box>
 	);
 };
