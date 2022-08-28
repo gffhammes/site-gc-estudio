@@ -6,22 +6,22 @@ interface INavLink {
 export const navLinks: INavLink[] = [
 	{
 		title: 'Sobre nós',
-		anchor: '#sobre-nos',
+		anchor: 'sobre-nos',
 	},
 	{
 		title: 'Serviços',
-		anchor: '#servicos',
+		anchor: 'servicos',
 	},
 	{
 		title: 'Projetos',
-		anchor: '#projetos',
+		anchor: 'projetos',
 	},
 	{
 		title: 'Clientes',
-		anchor: '#clientes',
+		anchor: 'clientes',
 	},
 	{
 		title: 'Contato',
-		anchor: '#contato',
+		anchor: 'contato',
 	},
 ];

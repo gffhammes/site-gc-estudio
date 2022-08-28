@@ -1,22 +1,22 @@
 html,
 body {
-  font-family: Roboto, sans-serif;
+	font-family: Roboto, sans-serif;
 }
 
 html,
 body,
 #__next {
-  height: 100%;
+	height: 100%;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+	color: inherit;
+	text-decoration: none;
 }
 
 * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	-webkit-tap-highlight-color: transparent;
 }

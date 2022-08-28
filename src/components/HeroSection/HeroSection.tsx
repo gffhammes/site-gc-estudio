@@ -36,6 +36,7 @@ export const HeroSection = ({
 				backgroundImage: `url(${backgroundImageUrl})`,
 				backgroundSize: 'cover',
 			}}
+			id="hero"
 		>
 			<Box sx={sxOverlay} />
 			<Container
