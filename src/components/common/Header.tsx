@@ -7,7 +7,12 @@ export const Header = () => {
 	return (
 		<Box
 			component="header"
-			sx={{ position: 'fixed', width: '100%', zIndex: 999 }}
+			sx={{
+				position: 'fixed',
+				width: '100%',
+				zIndex: 999,
+				backgroundColor: 'primary.main',
+			}}
 		>
 			<Container sx={{ py: 4 }}>
 				<Stack

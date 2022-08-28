@@ -3,6 +3,7 @@ import React from 'react';
 import { defaultSectionPadding } from '../../constants/defaultSectionPadding';
 import { useFetch } from '../../hooks/useFetch';
 import { MainText } from '../common/MainText';
+import { Section } from '../common/Section';
 import { ServiceCard } from './ServiceCard';
 
 export const ServicesSection = () => {
@@ -13,8 +14,8 @@ export const ServicesSection = () => {
 	});
 
 	return (
-		<Box sx={{ py: defaultSectionPadding, backgroundColor: '#f4f4f4' }}>
-			<Container>
+		<Section id="servicos" backgroundColor="#f4f4f4">
+			<>
 				<MainText title={data?.h2} text={data?.textoPrincipal} />
 				<Grid container spacing={2}>
 					{data?.cards.map((card: any) => {
@@ -31,7 +32,7 @@ export const ServicesSection = () => {
 						);
 					})}
 				</Grid>
-			</Container>
-		</Box>
+			</>
+		</Section>
 	);
 };

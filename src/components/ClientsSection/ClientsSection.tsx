@@ -3,6 +3,7 @@ import React from 'react';
 import { defaultSectionPadding } from '../../constants/defaultSectionPadding';
 import { useFetch } from '../../hooks/useFetch';
 import { MainText } from '../common/MainText';
+import { Section } from '../common/Section';
 
 export const ClientsSection = () => {
 	const { data, fetching } = useFetch<any>('/clientes', {
@@ -12,10 +13,8 @@ export const ClientsSection = () => {
 	});
 
 	return (
-		<Box sx={{ py: defaultSectionPadding, backgroundColor: '#f4f4f4' }}>
-			<Container>
-				<MainText title={data?.h2} text={data?.textoPrincipal} />
-			</Container>
-		</Box>
+		<Section id="clientes">
+			<MainText title={data?.h2} text={data?.textoPrincipal} />
+		</Section>
 	);
 };
