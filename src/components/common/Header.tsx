@@ -1,9 +1,11 @@
-import { Box, Container, Stack } from '@mui/material';
+import { Box, Container, Stack, useScrollTrigger } from '@mui/material';
 import React from 'react';
 import { Logo } from './Logo';
 import { NavLinks } from './NavLinks';
 
 export const Header = () => {
+	const scroll = useScrollTrigger({ disableHysteresis: true, threshold: 50 });
+
 	return (
 		<Box
 			component="header"
@@ -11,7 +13,8 @@ export const Header = () => {
 				position: 'fixed',
 				width: '100%',
 				zIndex: 999,
-				backgroundColor: 'primary.main',
+				transition: 'ease all .3s',
+				backgroundColor: scroll ? 'primary.main' : 'transparent',
 			}}
 		>
 			<Container sx={{ py: 4 }}>
