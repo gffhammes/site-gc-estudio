@@ -14,7 +14,11 @@ export const ClientsSection = () => {
 
 	return (
 		<Section id="clientes">
-			<MainText title={data?.h2} text={data?.textoPrincipal} />
+			<MainText
+				title={data?.h2}
+				text={data?.textoPrincipal}
+				align="center"
+			/>
 		</Section>
 	);
 };

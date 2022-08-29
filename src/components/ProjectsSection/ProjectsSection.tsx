@@ -14,7 +14,11 @@ export const ProjectsSection = () => {
 
 	return (
 		<Section id="projetos">
-			<MainText title={data?.h2} text={data?.textoPrincipal} />
+			<MainText
+				title={data?.h2}
+				text={data?.textoPrincipal}
+				align="center"
+			/>
 		</Section>
 	);
 };

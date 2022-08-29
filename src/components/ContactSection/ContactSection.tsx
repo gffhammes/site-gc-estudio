@@ -14,8 +14,8 @@ export const ContactSection = () => {
 	console.log(data);
 
 	return (
-		<Section id="contato">
-			<MainText title={data?.h2} />
+		<Section id="contato" backgroundColor="secondary.main">
+			<MainText title={data?.h2} color="white" dashPosition="top" />
 		</Section>
 	);
 };

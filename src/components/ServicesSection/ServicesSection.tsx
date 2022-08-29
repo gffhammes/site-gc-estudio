@@ -16,7 +16,11 @@ export const ServicesSection = () => {
 	return (
 		<Section id="servicos" backgroundColor="#f4f4f4">
 			<>
-				<MainText title={data?.h2} text={data?.textoPrincipal} />
+				<MainText
+					title={data?.h2}
+					text={data?.textoPrincipal}
+					align="center"
+				/>
 				<Grid container spacing={2}>
 					{data?.cards.map((card: any) => {
 						return (

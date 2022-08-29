@@ -27,7 +27,11 @@ export const AboutSection = () => {
 					spacing={5}
 					sx={{ flexBasis: '61ch', maxWidth: '61ch' }}
 				>
-					<MainText title={data?.h2} text={data?.textoPrincipal} />
+					<MainText
+						title={data?.h2}
+						text={data?.textoPrincipal}
+						dashPosition="top"
+					/>
 					{data?.textoComIcone.map((item: any) => {
 						return (
 							<TextWithIcon
