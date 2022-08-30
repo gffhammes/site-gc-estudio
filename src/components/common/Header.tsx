@@ -15,9 +15,10 @@ export const Header = () => {
 				zIndex: 999,
 				transition: 'ease all .3s',
 				backgroundColor: scroll ? 'primary.main' : 'transparent',
+				boxShadow: scroll ? 5 : 0,
 			}}
 		>
-			<Container sx={{ py: 4 }}>
+			<Container sx={{ py: 3 }}>
 				<Stack
 					direction="row"
 					justifyContent="space-between"

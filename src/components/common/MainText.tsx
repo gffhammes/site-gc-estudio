@@ -7,6 +7,7 @@ export interface IMainTextProps {
 	align?: 'center' | 'left';
 	dashPosition?: 'top' | 'bottom';
 	color?: 'primary' | 'white';
+	marginBottom?: boolean;
 }
 
 export const MainText = ({
@@ -15,23 +16,24 @@ export const MainText = ({
 	align = 'left',
 	dashPosition = 'bottom',
 	color = 'primary',
+	marginBottom = false,
 }: IMainTextProps) => {
 	const sxDashToUse = {
 		height: '.4rem',
 		width: dashPosition === 'bottom' ? '6rem' : '3rem',
 		backgroundColor:
 			color === 'primary' ? 'secondary.main' : 'primary.main',
+		my: 1,
 	};
 
 	return (
-		<Stack alignItems={align}>
+		<Stack alignItems={align} sx={{ marginBottom: marginBottom ? 4 : 0 }}>
 			{dashPosition === 'top' && <Box sx={sxDashToUse} />}
 			<Typography
 				variant="h2"
 				fontSize={52}
 				fontWeight={600}
 				color={color}
-				sx={{ my: 1 }}
 			>
 				{title}
 			</Typography>

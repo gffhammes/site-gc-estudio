@@ -25,11 +25,20 @@ export const TextWithIcon = ({
 				>
 					<Image src={icon} alt={title} layout="fill" />
 				</Box>
-				<Stack spacing={2}>
-					<Typography fontSize={23} fontWeight="bold">
+				<Stack spacing={1}>
+					<Typography
+						color="primary.main"
+						fontSize={23}
+						fontWeight="bold"
+					>
 						{title}
 					</Typography>
-					<Typography sx={{ maxWidth: '43ch' }}>{text}</Typography>
+					<Typography
+						color="rgb(37 52 93 / 60%)"
+						sx={{ maxWidth: '43ch' }}
+					>
+						{text}
+					</Typography>
 				</Stack>
 			</Stack>
 		</Box>

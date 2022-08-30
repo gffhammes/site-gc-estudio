@@ -20,6 +20,7 @@ export const ServicesSection = () => {
 					title={data?.h2}
 					text={data?.textoPrincipal}
 					align="center"
+					marginBottom
 				/>
 				<Grid container spacing={2}>
 					{data?.cards.map((card: any) => {

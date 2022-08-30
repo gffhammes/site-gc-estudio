@@ -14,12 +14,27 @@ export const ServiceCard = ({
 	data: { icon, title, text },
 }: IServiceCardProps) => {
 	return (
-		<Box sx={{ backgroundColor: 'primary.main', padding: '2rem' }}>
+		<Box
+			sx={{
+				backgroundColor: 'primary.main',
+				padding: '2rem',
+				height: '100%',
+				transition: '.3s ease all',
+				'&:hover': {
+					backgroundColor: 'secondary.main',
+				},
+			}}
+		>
 			<Stack spacing={2} alignItems="center">
 				<Box
 					sx={{ position: 'relative', height: '55px', width: '55px' }}
 				>
-					<Image src={icon} alt={title} layout="fill" />
+					<Image
+						src={icon}
+						alt={title}
+						layout="fill"
+						objectFit="contain"
+					/>
 				</Box>
 				<Typography variant="h6" color="white" textAlign="center">
 					{title}
