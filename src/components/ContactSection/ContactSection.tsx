@@ -13,7 +13,6 @@ export const ContactSection = () => {
 			populate: ['foto'],
 		},
 	});
-	console.log(data);
 
 	return (
 		<Section id="contato" backgroundColor="secondary.main">
@@ -42,7 +41,7 @@ export const ContactSection = () => {
 					}}
 				>
 					<Image
-						src={data?.foto.data.attributes.url}
+						src={data?.foto.data.attributes.url || '/'}
 						alt="GC Estúdio"
 						layout="fill"
 					/>

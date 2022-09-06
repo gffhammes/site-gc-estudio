@@ -1,4 +1,5 @@
-import { Box, Container } from '@mui/material';
+import { Box, Container, Grid } from '@mui/material';
+import Image from 'next/image';
 import React from 'react';
 import { defaultSectionPadding } from '../../constants/defaultSectionPadding';
 import { useFetch } from '../../hooks/useFetch';
@@ -7,10 +8,12 @@ import { Section } from '../common/Section';
 
 export const ClientsSection = () => {
 	const { data, fetching } = useFetch<any>('/clientes', {
-		// params: {
-		// 	populate: ['cards', 'cards.icone'],
-		// },
+		params: {
+			populate: ['clientes', 'clientes.logo'],
+		},
 	});
+
+	console.log(data);
 
 	return (
 		<Section id="clientes">
@@ -19,6 +22,16 @@ export const ClientsSection = () => {
 				text={data?.textoPrincipal}
 				align="center"
 			/>
+			<Grid container columns={10}>
+				{data?.clientes.map((client, index) => (
+					<Grid key={index} item xs={5} sm={2}>
+						<Box>
+							{/* <Image  /> */}
+						</Box>
+						<Box>{client.nome}</Box>
+					</Grid>
+				))}
+			</Grid>
 		</Section>
 	);
 };
