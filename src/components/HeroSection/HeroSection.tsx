@@ -53,7 +53,7 @@ export const HeroSection = ({
 					<Stack
 						sx={{
 							margin: 'auto 0 auto auto',
-							color: 'white',
+							color: 'white.main',
 						}}
 						alignItems="flex-end"
 					>

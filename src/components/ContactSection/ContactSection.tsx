@@ -16,7 +16,12 @@ export const ContactSection = () => {
 
 	return (
 		<Section id="contato" backgroundColor="secondary.main">
-			<Stack direction="row" spacing={4} alignItems="center">
+			<Stack
+				direction={{ xs: 'column', md: 'row' }}
+				spacing={10}
+				alignItems="center"
+				justifyContent="space-between"
+			>
 				<Box
 					sx={{
 						flexBasis: '50%',
@@ -24,7 +29,7 @@ export const ContactSection = () => {
 				>
 					<MainText
 						title={data?.h2}
-						color="white"
+						color="white.main"
 						dashPosition="top"
 						marginBottom
 					/>
@@ -36,6 +41,7 @@ export const ContactSection = () => {
 					sx={{
 						position: 'relative',
 						width: '100%',
+						maxWidth: { xs: '27rem', md: 'unset' },
 						aspectRatio: '1 / 1',
 						flexBasis: '50%',
 					}}

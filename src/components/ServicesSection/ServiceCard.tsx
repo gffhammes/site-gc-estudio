@@ -36,7 +36,7 @@ export const ServiceCard = ({
 						objectFit="contain"
 					/>
 				</Box>
-				<Typography variant="h6" color="white" textAlign="center">
+				<Typography variant="h6" color="white.main" textAlign="center">
 					{title}
 				</Typography>
 				<Typography

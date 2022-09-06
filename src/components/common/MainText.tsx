@@ -6,7 +6,7 @@ export interface IMainTextProps {
 	text?: string;
 	align?: 'center' | 'left';
 	dashPosition?: 'top' | 'bottom';
-	color?: 'primary' | 'white';
+	color?: 'primary' | 'white.main';
 	marginBottom?: boolean;
 }
 

@@ -18,7 +18,7 @@ export const NavLinks = () => {
 								onClick={() => scrollTo(navLink.anchor)}
 								sx={{ cursor: 'pointer' }}
 							>
-								<Typography color="white">
+								<Typography color="white.main">
 									{navLink.title}
 								</Typography>
 							</Box>
