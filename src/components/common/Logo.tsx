@@ -4,14 +4,19 @@ import { scrollTo } from '../../helpers/scrollTo';
 
 const sxLogoWrapper: SxProps<Theme> = {
 	position: 'relative',
-	height: '3.5rem',
-	width: '5.3rem',
 	cursor: 'pointer',
+	aspectRatio: '1 / .66',
 };
 
-export const Logo = () => {
+interface ILogoProps {
+	size?: 'md' | 'lg';
+}
+
+export const Logo = ({ size = 'md' }: ILogoProps) => {
+	const width = size === 'md' ? '5.3rem' : '8rem';
+
 	return (
-		<Box sx={sxLogoWrapper} onClick={() => scrollTo('hero')}>
+		<Box sx={{ ...sxLogoWrapper, width }} onClick={() => scrollTo('hero')}>
 			<Image src={'/images/logo.svg'} alt="logo" layout="fill" />
 		</Box>
 	);
