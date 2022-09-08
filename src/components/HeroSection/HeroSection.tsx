@@ -1,6 +1,7 @@
 import { Box, Container, Stack, Typography } from '@mui/material';
 import React from 'react';
 import { Button } from '../common/Button';
+import { RedCircle } from './RedCircle';
 
 export interface IHeroData {
 	h1: string;
@@ -20,6 +21,16 @@ const sxOverlay = {
 	backgroundColor: 'primary.main',
 	position: 'absolute',
 	zIndex: 100,
+};
+
+const sxOverlayMultiply = {
+	...sxOverlay,
+	opacity: 0.6,
+	mixBlendMode: 'multiply',
+};
+
+const sxOverlayColor = {
+	...sxOverlay,
 	mixBlendMode: 'color',
 };
 
@@ -35,21 +46,39 @@ export const HeroSection = ({
 				width: '100%',
 				backgroundImage: `url(${backgroundImageUrl})`,
 				backgroundSize: 'cover',
+				overflow: 'hidden',
 			}}
 			id="hero"
 		>
-			<Box sx={sxOverlay} />
+			<Box
+				sx={{
+					position: 'absolute',
+					width: '100%',
+					height: '100%',
+					overflow: 'hidden',
+				}}
+			>
+				<RedCircle />
+			</Box>
+			<Box sx={sxOverlayMultiply} />
+			<Box sx={sxOverlayColor} />
+
 			<Container
 				sx={{
 					display: 'flex',
 					height: '100%',
 					width: '100%',
 					position: 'relative',
-					zIndex: 500,
 					justifyContent: 'flex-end',
+					py: 10,
+					zIndex: 500,
 				}}
 			>
-				<Stack alignItems="center" sx={{ width: '100%' }}>
+				<Stack
+					alignItems="center"
+					spacing={4}
+					sx={{ width: '100%', position: 'relative', zIndex: 999 }}
+				>
 					<Stack
 						sx={{
 							margin: 'auto 0 auto auto',
@@ -57,12 +86,17 @@ export const HeroSection = ({
 						}}
 						alignItems="flex-end"
 					>
-						<Typography variant="h1">{h1Array[0]}</Typography>
-						<Typography variant="h1">{h1Array[1]}</Typography>
-						<Typography variant="h1">{h1Array[2]}</Typography>
+						<Typography variant="h1" textAlign="right">
+							{h1Array[0]}
+						</Typography>
+						<Typography variant="h1" textAlign="right">
+							{h1Array[1]}
+						</Typography>
+						<Typography variant="h1" textAlign="right">
+							{h1Array[2]}
+						</Typography>
 					</Stack>
-					<Button color="secondary" variant="contained">
-						{' '}
+					<Button color="white" variant="contained">
 						{buttonText}
 					</Button>
 				</Stack>

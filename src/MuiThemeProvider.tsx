@@ -45,7 +45,7 @@ const theme = createTheme({
 				fontSize: 110,
 			},
 			'@media (min-width: 1200px)': {
-				fontSize: 150,
+				fontSize: 140,
 			},
 		},
 	},

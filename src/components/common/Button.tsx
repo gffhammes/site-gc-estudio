@@ -7,12 +7,16 @@ interface IButtonProps extends ButtonProps {
 
 const StyledButton = styled(MuiButton, {
 	// shouldForwardProp: (prop) => prop !== 'color',
-})(({ color }) => ({
-	width: 'fit-content',
-	m: 'auto',
-	fontWeight: 'bold',
-	textTransform: 'none',
-}));
+})(({ color }) => {
+	console.log(color === 'white');
+	return {
+		width: 'fit-content',
+		m: 'auto',
+		fontWeight: 'bold',
+		textTransform: 'none',
+		color: color === 'white' ? '#ED2F3C' : 'white',
+	};
+});
 
 export const Button = ({ children, ...props }: IButtonProps) => {
 	return <StyledButton {...props}>{children}</StyledButton>;
