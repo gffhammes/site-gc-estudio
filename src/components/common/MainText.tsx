@@ -34,13 +34,16 @@ export const MainText = ({
 				fontSize={52}
 				fontWeight={600}
 				color={color}
+				textAlign={align}
 			>
 				{title}
 			</Typography>
 			{dashPosition === 'bottom' && <Box sx={sxDashToUse} />}
 
 			{text && (
-				<Typography color="rgb(37 52 93 / 60%)">{text}</Typography>
+				<Typography textAlign={align} color="rgb(37 52 93 / 60%)">
+					{text}
+				</Typography>
 			)}
 		</Stack>
 	);

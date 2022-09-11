@@ -13,8 +13,6 @@ export const ClientsSection = () => {
 		},
 	});
 
-	console.log(data);
-
 	return (
 		<Section id="clientes">
 			<MainText

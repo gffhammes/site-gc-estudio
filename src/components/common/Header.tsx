@@ -24,7 +24,7 @@ export const Header = () => {
 					justifyContent="space-between"
 					alignItems="center"
 				>
-					<Logo />
+					<Logo size={scroll ? 'sm' : 'md'} />
 					<NavLinks />
 				</Stack>
 			</Container>
