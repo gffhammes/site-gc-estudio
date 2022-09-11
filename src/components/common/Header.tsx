@@ -12,7 +12,7 @@ export const Header = () => {
 			sx={{
 				position: 'fixed',
 				width: '100%',
-				zIndex: 9999,
+				zIndex: 1000,
 				transition: 'ease all .3s',
 				backgroundColor: scroll ? 'primary.main' : 'transparent',
 				boxShadow: scroll ? 5 : 0,

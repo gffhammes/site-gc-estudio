@@ -1,4 +1,12 @@
-import { Box, Drawer, IconButton, Typography } from '@mui/material';
+import {
+	Box,
+	Container,
+	Divider,
+	Drawer,
+	IconButton,
+	Stack,
+	Typography,
+} from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { useState } from 'react';
@@ -16,14 +24,10 @@ export const Sidebar = () => {
 		setOpen(false);
 	};
 
-	const toggleOpen = () => {
-		setOpen((open) => !open);
-	};
-
 	return (
 		<>
-			<IconButton onClick={toggleOpen} color="white">
-				{open ? <CloseIcon /> : <MenuIcon />}
+			<IconButton onClick={handleOpen} color="white">
+				<MenuIcon />
 			</IconButton>
 
 			<Drawer
@@ -32,23 +36,38 @@ export const Sidebar = () => {
 				onClose={handleClose}
 				sx={{ '& .MuiPaper-root': { backgroundColor: 'primary.main' } }}
 			>
-				<Box sx={{ height: '20rem', width: '100%', p: 10, pt: 20 }}>
-					{navLinks.map((navLink) => {
-						return (
-							<Box
-								key={navLink.title}
-								onClick={() => {
-									scrollTo(navLink.anchor);
-									handleClose();
-								}}
-								sx={{ cursor: 'pointer' }}
+				<Box sx={{ width: '100%' }}>
+					<Container sx={{ py: 3 }}>
+						<Stack spacing={4}>
+							<IconButton
+								color="white"
+								onClick={handleClose}
+								sx={{ ml: 'auto' }}
 							>
-								<Typography sx={{ color: 'white' }}>
-									{navLink.title}
-								</Typography>
-							</Box>
-						);
-					})}
+								<CloseIcon />
+							</IconButton>
+							<Stack spacing={3} divider={<Divider />}>
+								{navLinks.map((navLink) => {
+									return (
+										<Box
+											key={navLink.title}
+											onClick={() => {
+												scrollTo(navLink.anchor);
+												handleClose();
+											}}
+											sx={{ cursor: 'pointer' }}
+										>
+											<Typography
+												sx={{ color: 'white.main' }}
+											>
+												{navLink.title}
+											</Typography>
+										</Box>
+									);
+								})}
+							</Stack>
+						</Stack>
+					</Container>
 				</Box>
 			</Drawer>
 		</>

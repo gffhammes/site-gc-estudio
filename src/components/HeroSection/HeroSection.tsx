@@ -1,5 +1,6 @@
 import { Box, Container, Stack, Typography } from '@mui/material';
 import React from 'react';
+import { scrollTo } from '../../helpers/scrollTo';
 import { Button } from '../common/Button';
 import { RedCircle } from './RedCircle';
 
@@ -71,13 +72,13 @@ export const HeroSection = ({
 					position: 'relative',
 					justifyContent: 'flex-end',
 					py: 10,
-					zIndex: 500,
+					zIndex: 300,
 				}}
 			>
 				<Stack
 					alignItems="center"
 					spacing={4}
-					sx={{ width: '100%', position: 'relative', zIndex: 999 }}
+					sx={{ width: '100%', position: 'relative', zIndex: 400 }}
 				>
 					<Stack
 						sx={{
@@ -96,7 +97,11 @@ export const HeroSection = ({
 							{h1Array[2]}
 						</Typography>
 					</Stack>
-					<Button color="white" variant="contained">
+					<Button
+						color="white"
+						variant="contained"
+						onClick={() => scrollTo('sobre-nos')}
+					>
 						{buttonText}
 					</Button>
 				</Stack>
