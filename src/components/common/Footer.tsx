@@ -10,8 +10,6 @@ import { getFormattedPhone } from "../../helpers/getFormattedPhone";
 export const Footer = () => {
   const { data } = useFetch<any>("/dados-empresa");
 
-  console.log(data);
-
   return (
     <>
       <Box
@@ -36,7 +34,7 @@ export const Footer = () => {
 
               <Stack spacing={2}>
                 <a
-                  href={`tel:${data.whatsapp}`}
+                  href={`tel:${data?.whatsapp}`}
                   style={{ width: "fit-content" }}
                 >
                   <Stack
@@ -46,11 +44,11 @@ export const Footer = () => {
                     sx={{ color: "rgba(255,255,255,.4)" }}
                   >
                     <PhoneEnabledOutlinedIcon />
-                    <Typography>{getFormattedPhone(data.whatsapp)}</Typography>
+                    <Typography>{getFormattedPhone(data?.whatsapp)}</Typography>
                   </Stack>
                 </a>
 
-                <a href={`mailto:	${data.email}`}>
+                <a href={`mailto:	${data?.email}`}>
                   <Stack
                     alignItems="center"
                     direction="row"
@@ -58,7 +56,7 @@ export const Footer = () => {
                     sx={{ color: "rgba(255,255,255,.4)" }}
                   >
                     <MailOutlineIcon />
-                    <Typography>{data.email}</Typography>
+                    <Typography>{data?.email}</Typography>
                   </Stack>
                 </a>
               </Stack>
