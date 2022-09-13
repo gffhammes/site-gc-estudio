@@ -40,7 +40,7 @@ export const ServiceCard = ({
             className="icon"
             sx={{
               "& *": {
-                transition: ".3s ease all",
+                transition: ".1s ease all",
               },
             }}
           />

@@ -1,76 +1,86 @@
-import { Box, Container, Stack, Typography } from '@mui/material';
-import React from 'react';
-import { defaultSectionPadding } from '../../constants/defaultSectionPadding';
-import { Button } from './Button';
-import { Logo } from './Logo';
-import PhoneEnabledOutlinedIcon from '@mui/icons-material/PhoneEnabledOutlined';
-import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import { Box, Container, Stack, Typography } from "@mui/material";
+import React from "react";
+import { Button } from "./Button";
+import { Logo } from "./Logo";
+import PhoneEnabledOutlinedIcon from "@mui/icons-material/PhoneEnabledOutlined";
+import MailOutlineIcon from "@mui/icons-material/MailOutline";
+import { useFetch } from "../../hooks/useFetch";
+import { getFormattedPhone } from "../../helpers/getFormattedPhone";
 
 export const Footer = () => {
-	return (
-		<>
-			<Box
-				component="footer"
-				sx={{
-					backgroundColor: 'primary.main',
-					py: 15,
-				}}
-			>
-				<Container sx={{ maxWidth: { xs: '27rem', md: '1200px' } }}>
-					<Stack
-						direction={{ xs: 'column', md: 'row' }}
-						justifyContent="space-between"
-						spacing={8}
-						sx={{ color: 'white.main' }}
-					>
-						<Logo size="lg" />
-						<Stack spacing={3}>
-							<Typography fontSize={20} fontWeight={600}>
-								Entre em contato
-							</Typography>
+  const { data } = useFetch<any>("/dados-empresa");
 
-							<Stack spacing={2}>
-								<Stack
-									alignItems="center"
-									direction="row"
-									spacing={1}
-									sx={{ color: 'rgba(255,255,255,.4)' }}
-								>
-									<PhoneEnabledOutlinedIcon />
-									<Typography>+55 (47) 99747-6478</Typography>
-								</Stack>
+  console.log(data);
 
-								<Stack
-									alignItems="center"
-									direction="row"
-									spacing={1}
-									sx={{ color: 'rgba(255,255,255,.4)' }}
-								>
-									<MailOutlineIcon />
-									<Typography>
-										contato@gcestudio.com.br
-									</Typography>
-								</Stack>
-							</Stack>
-						</Stack>
-						<Stack spacing={3}>
-							<Typography fontSize={20} fontWeight={600}>
-								Quer evoluir sua marca?{' '}
-							</Typography>
-							<Button color="secondary" variant="contained">
-								Iniciar um projeto
-							</Button>
-						</Stack>
-					</Stack>
-				</Container>
-			</Box>
-			<Box sx={{ py: 2, backgroundColor: '#192B51' }}>
-				<Container>
-					<Typography textAlign="center" color="white.main">
-						© 2022 GC Estúdio. Todos os Direitos Reservados.
-					</Typography>
-				</Container>
-			</Box>
-		</>
-	);
+  return (
+    <>
+      <Box
+        component="footer"
+        sx={{
+          backgroundColor: "primary.main",
+          py: 15,
+        }}
+      >
+        <Container sx={{ maxWidth: { xs: "27rem", md: "1200px" } }}>
+          <Stack
+            direction={{ xs: "column", md: "row" }}
+            justifyContent="space-between"
+            spacing={8}
+            sx={{ color: "white.main" }}
+          >
+            <Logo size="lg" />
+            <Stack spacing={3}>
+              <Typography fontSize={20} fontWeight={600}>
+                Entre em contato
+              </Typography>
+
+              <Stack spacing={2}>
+                <a
+                  href={`tel:${data.whatsapp}`}
+                  style={{ width: "fit-content" }}
+                >
+                  <Stack
+                    alignItems="center"
+                    direction="row"
+                    spacing={1}
+                    sx={{ color: "rgba(255,255,255,.4)" }}
+                  >
+                    <PhoneEnabledOutlinedIcon />
+                    <Typography>{getFormattedPhone(data.whatsapp)}</Typography>
+                  </Stack>
+                </a>
+
+                <a href={`mailto:	${data.email}`}>
+                  <Stack
+                    alignItems="center"
+                    direction="row"
+                    spacing={1}
+                    sx={{ color: "rgba(255,255,255,.4)" }}
+                  >
+                    <MailOutlineIcon />
+                    <Typography>{data.email}</Typography>
+                  </Stack>
+                </a>
+              </Stack>
+            </Stack>
+            <Stack spacing={3}>
+              <Typography fontSize={20} fontWeight={600}>
+                Quer evoluir sua marca?{" "}
+              </Typography>
+              <Button color="secondary" variant="contained">
+                Iniciar um projeto
+              </Button>
+            </Stack>
+          </Stack>
+        </Container>
+      </Box>
+      <Box sx={{ py: 2, backgroundColor: "#192B51" }}>
+        <Container>
+          <Typography textAlign="center" color="white.main">
+            © 2022 GC Estúdio. Todos os Direitos Reservados.
+          </Typography>
+        </Container>
+      </Box>
+    </>
+  );
 };
