@@ -44,7 +44,9 @@ export const Footer = () => {
                     sx={{ color: "rgba(255,255,255,.4)" }}
                   >
                     <PhoneEnabledOutlinedIcon />
-                    <Typography>{getFormattedPhone(data?.whatsapp)}</Typography>
+                    <Typography>
+                      {getFormattedPhone(data?.whatsapp || "")}
+                    </Typography>
                   </Stack>
                 </a>
 
