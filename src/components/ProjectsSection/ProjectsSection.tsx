@@ -1,9 +1,10 @@
 import { Box, Tabs, Tab } from "@mui/material";
-import { useState, SyntheticEvent } from "react";
+import { useState, SyntheticEvent, useMemo } from "react";
 import { defaultSectionPadding } from "../../constants/defaultSectionPadding";
 import { useFetch } from "../../hooks/useFetch";
 import { MainText } from "../common/MainText";
 import { Section } from "../common/Section";
+import { ProjectsSlider } from "./ProjectsSlider";
 
 export const ProjectsSection = () => {
   const { data, fetching } = useFetch<any>("/projetos", {
@@ -28,7 +29,18 @@ export const ProjectsSection = () => {
     return project.categoria.data.attributes.nome;
   });
 
-  console.log(categories);
+  const allCategories = useMemo(
+    () => ["Todos", ...(categories ?? [])],
+    [categories]
+  );
+
+  const projectsToShow = useMemo(() => {
+    if (value === 0) return data?.projetos;
+
+    return data?.projetos.filter((project: any) => {
+      return project.categoria.data.attributes.nome === allCategories[value];
+    });
+  }, [allCategories, data?.projetos, value]);
 
   return (
     <Section id="projetos">
@@ -53,11 +65,16 @@ export const ProjectsSection = () => {
             },
           }}
         >
-          <Tab label="Todos" />
-          {categories?.map((categorie: any, index: number) => {
+          {allCategories?.map((categorie: any, index: number) => {
             return <Tab key={index} label={categorie} />;
           })}
         </Tabs>
+
+        {projectsToShow && (
+          <Box>
+            <ProjectsSlider slides={projectsToShow} />
+          </Box>
+        )}
       </Box>
     </Section>
   );
