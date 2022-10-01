@@ -1,13 +1,5 @@
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
-import { Button } from "../common/Button";
+import { Dialog, useMediaQuery, useTheme } from "@mui/material";
+import Box from "@mui/material/Box";
 
 interface IFullscreenPhotoProps {
   open: boolean;
@@ -22,24 +14,17 @@ export const FullscreenPhoto = ({
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
-    <Dialog fullScreen={fullScreen} open={open} onClose={handleClose}>
-      <DialogTitle id="responsive-dialog-title">
-        {"Use Google's location service?"}
-      </DialogTitle>
-      <DialogContent>
-        <DialogContentText>
-          Let Google help apps determine location. This means sending anonymous
-          location data to Google, even when no apps are running.
-        </DialogContentText>
-      </DialogContent>
-      <DialogActions>
-        <Button autoFocus onClick={handleClose}>
-          Disagree
-        </Button>
-        <Button onClick={handleClose} autoFocus>
-          Agree
-        </Button>
-      </DialogActions>
+    <Dialog
+      fullScreen={fullScreen}
+      open={open}
+      onClose={handleClose}
+      scroll="body"
+      maxWidth="xl"
+      sx={{ "& .MuiDialog-paper": { width: "100%" } }}
+    >
+      <Box
+        sx={{ height: "20000px", width: "100%", backgroundColor: "red" }}
+      ></Box>
     </Dialog>
   );
 };
