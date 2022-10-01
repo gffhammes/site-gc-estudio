@@ -1,10 +1,12 @@
 import { Box } from "@mui/material";
 import { Stack } from "@mui/system";
 import useEmblaCarousel from "embla-carousel-react";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Slide } from "./Slide";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import { Arrows } from "./Arrows";
+import { FullscreenPhoto } from "./FullscreenPhoto";
 
 interface IProjectsSliderProps {
   slides: any[];
@@ -13,8 +15,18 @@ interface IProjectsSliderProps {
 export const ProjectsSlider = ({ slides }: IProjectsSliderProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
-    // containScroll: "trimSnaps",
+    draggable: false,
   });
+
+  const [openFullscreen, setOpenFullscreen] = useState(false);
+
+  const handleOpenFullscreen = () => {
+    setOpenFullscreen(true);
+  };
+
+  const handleCloseFullscreen = () => {
+    setOpenFullscreen(false);
+  };
 
   console.log(slides);
 
@@ -30,66 +42,49 @@ export const ProjectsSlider = ({ slides }: IProjectsSliderProps) => {
     if (emblaApi) emblaApi.reInit();
   }, [emblaApi, slides]);
 
-  return (
-    <Box sx={sxEmbla} ref={emblaRef}>
-      <Box sx={sxEmblaContainer}>
-        {slides?.map((slide, index) => {
-          return (
-            <Box key={index} sx={sxEmblaSlide}>
-              <Slide slide={slide} />
+  if (slides?.length <= 1) {
+    return (
+      <>
+        <Box sx={sxEmbla}>
+          <Box sx={sxEmblaContainer}>
+            <Box
+              sx={{ ...sxEmblaSlide, mx: "auto" }}
+              onClick={handleOpenFullscreen}
+            >
+              <Slide slide={slides[0]} />
             </Box>
-          );
-        })}
+          </Box>
+        </Box>
+
+        <FullscreenPhoto
+          open={openFullscreen}
+          handleClose={handleCloseFullscreen}
+        />
+      </>
+    );
+  }
+
+  return (
+    <>
+      <Box sx={sxEmbla} ref={emblaRef}>
+        <Box sx={sxEmblaContainer}>
+          {slides?.map((slide, index) => {
+            return (
+              <Box key={index} sx={sxEmblaSlide} onClick={handleOpenFullscreen}>
+                <Slide slide={slide} />
+              </Box>
+            );
+          })}
+        </Box>
+
+        <Arrows scrollNext={scrollNext} scrollPrev={scrollPrev} />
       </Box>
 
-      <Stack
-        sx={{
-          height: "100%",
-          width: "100%",
-          position: "absolute",
-          top: 0,
-          left: 0,
-        }}
-        direction="row"
-        justifyContent="space-between"
-      >
-        <Stack
-          alignItems="center"
-          justifyContent="center"
-          sx={{
-            height: "100%",
-            width: "20rem",
-            background:
-              "linear-gradient(90deg, rgb(255, 255, 255) 50%, rgba(255, 255, 255, 0))",
-          }}
-        >
-          <ArrowBackIosIcon
-            onClick={scrollPrev}
-            color="secondary"
-            fontSize="large"
-            sx={{ cursor: "pointer" }}
-          />
-        </Stack>
-
-        <Stack
-          alignItems="center"
-          justifyContent="center"
-          sx={{
-            height: "100%",
-            width: "10rem",
-            background:
-              "linear-gradient(270deg, rgb(255, 255, 255) 50%, rgba(255, 255, 255, 0))",
-          }}
-        >
-          <ArrowForwardIosIcon
-            onClick={scrollNext}
-            color="secondary"
-            fontSize="large"
-            sx={{ cursor: "pointer" }}
-          />
-        </Stack>
-      </Stack>
-    </Box>
+      <FullscreenPhoto
+        open={openFullscreen}
+        handleClose={handleCloseFullscreen}
+      />
+    </>
   );
 };
 
@@ -105,4 +100,5 @@ const sxEmblaContainer = {
 const sxEmblaSlide = {
   flex: "0 0 33%",
   mr: 4,
+  cursor: "pointer",
 };

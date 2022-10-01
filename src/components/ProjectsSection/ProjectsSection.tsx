@@ -46,7 +46,7 @@ export const ProjectsSection = () => {
     <Section id="projetos">
       <MainText title={data?.h2} text={data?.textoPrincipal} align="center" />
 
-      <Box>
+      <Box sx={{ mt: 4 }}>
         <Tabs
           value={value}
           onChange={handleChange}
@@ -71,7 +71,7 @@ export const ProjectsSection = () => {
         </Tabs>
 
         {projectsToShow && (
-          <Box>
+          <Box sx={{ mt: 8 }}>
             <ProjectsSlider slides={projectsToShow} />
           </Box>
         )}
