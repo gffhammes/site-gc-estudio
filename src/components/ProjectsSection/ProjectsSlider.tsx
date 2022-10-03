@@ -17,18 +17,17 @@ export const ProjectsSlider = ({ slides }: IProjectsSliderProps) => {
     loop: true,
     draggable: false,
   });
+  const [fullscreenIndex, setFullscreenIndex] = useState<number | null>(null);
 
-  const [openFullscreen, setOpenFullscreen] = useState(false);
-
-  const handleOpenFullscreen = () => {
-    setOpenFullscreen(true);
+  const handleOpenFullscreen = (index: number) => {
+    setFullscreenIndex(index);
   };
 
   const handleCloseFullscreen = () => {
-    setOpenFullscreen(false);
+    setFullscreenIndex(null);
   };
 
-  console.log(slides);
+  // console.log({ fullscreenIndex, slide: slides[0] });
 
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev();
@@ -49,7 +48,7 @@ export const ProjectsSlider = ({ slides }: IProjectsSliderProps) => {
           <Box sx={sxEmblaContainer}>
             <Box
               sx={{ ...sxEmblaSlide, mx: "auto" }}
-              onClick={handleOpenFullscreen}
+              onClick={() => handleOpenFullscreen(0)}
             >
               <Slide slide={slides[0]} />
             </Box>
@@ -57,8 +56,10 @@ export const ProjectsSlider = ({ slides }: IProjectsSliderProps) => {
         </Box>
 
         <FullscreenPhoto
-          open={openFullscreen}
+          open={fullscreenIndex !== null}
           handleClose={handleCloseFullscreen}
+          projectName={slides[fullscreenIndex ?? 0]?.nome}
+          photoSrc={slides[fullscreenIndex ?? 0]?.telaCheia.data.attributes.url}
         />
       </>
     );
@@ -70,7 +71,11 @@ export const ProjectsSlider = ({ slides }: IProjectsSliderProps) => {
         <Box sx={sxEmblaContainer}>
           {slides?.map((slide, index) => {
             return (
-              <Box key={index} sx={sxEmblaSlide} onClick={handleOpenFullscreen}>
+              <Box
+                key={index}
+                sx={sxEmblaSlide}
+                onClick={() => handleOpenFullscreen(index)}
+              >
                 <Slide slide={slide} />
               </Box>
             );
@@ -81,8 +86,10 @@ export const ProjectsSlider = ({ slides }: IProjectsSliderProps) => {
       </Box>
 
       <FullscreenPhoto
-        open={openFullscreen}
+        open={fullscreenIndex !== null}
         handleClose={handleCloseFullscreen}
+        projectName={slides[fullscreenIndex ?? 0]?.nome}
+        photoSrc={slides[fullscreenIndex ?? 0]?.telaCheia.data.attributes.url}
       />
     </>
   );
