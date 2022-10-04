@@ -38,7 +38,7 @@ const arrowContainerProps = {
   justifyContent: "center",
   sx: {
     height: "100%",
-    width: "10rem",
+    width: { xs: "3rem", md: "10rem" },
   },
 };
 

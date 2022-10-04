@@ -25,7 +25,11 @@ export const FullscreenPhoto = ({
       scroll="body"
       maxWidth="xl"
       sx={{
-        "& .MuiDialog-paper": { width: "100%", backgroundColor: "transparent" },
+        "& .MuiDialog-paper": {
+          width: "100%",
+          backgroundColor: "transparent",
+          boxShadow: 0,
+        },
       }}
     >
       <Typography variant="h5" gutterBottom color="#fff">

@@ -3,8 +3,6 @@ import { Stack } from "@mui/system";
 import useEmblaCarousel from "embla-carousel-react";
 import { useCallback, useEffect, useState } from "react";
 import { Slide } from "./Slide";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { Arrows } from "./Arrows";
 import { FullscreenPhoto } from "./FullscreenPhoto";
 
@@ -26,8 +24,6 @@ export const ProjectsSlider = ({ slides }: IProjectsSliderProps) => {
   const handleCloseFullscreen = () => {
     setFullscreenIndex(null);
   };
-
-  // console.log({ fullscreenIndex, slide: slides[0] });
 
   const scrollPrev = useCallback(() => {
     if (emblaApi) emblaApi.scrollPrev();
@@ -105,7 +101,7 @@ const sxEmblaContainer = {
 };
 
 const sxEmblaSlide = {
-  flex: "0 0 33%",
-  mr: 4,
+  flex: { xs: "0 0 70%", md: "0 0 33%" },
+  mr: { xs: 2, xm: 4 },
   cursor: "pointer",
 };
