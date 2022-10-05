@@ -1,4 +1,4 @@
-import { Dialog, useMediaQuery, useTheme } from "@mui/material";
+import { Dialog } from "@mui/material";
 import { Box, Typography } from "@mui/material";
 
 interface IFullscreenPhotoProps {
@@ -14,12 +14,8 @@ export const FullscreenPhoto = ({
   photoSrc,
   handleClose,
 }: IFullscreenPhotoProps) => {
-  const theme = useTheme();
-  const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
-
   return (
     <Dialog
-      fullScreen={fullScreen}
       open={open}
       onClose={handleClose}
       scroll="body"
