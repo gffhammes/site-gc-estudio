@@ -14,7 +14,7 @@ export const ClientsSection = () => {
   });
 
   return (
-    <Section id="clientes">
+    <Section id="clientes" backgroundColor="#f4f4f4">
       <MainText title={data?.h2} text={data?.textoPrincipal} align="center" />
       <Box sx={{ mt: 5 }}>
         <Grid

@@ -63,6 +63,7 @@ export const ContactSection = () => {
             src={data?.foto.data.attributes.url || "/"}
             alt="GC Estúdio"
             layout="fill"
+            objectFit="cover"
           />
         </Box>
       </Stack>
