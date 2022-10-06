@@ -43,7 +43,7 @@ export const ProjectsSlider = ({ slides }: IProjectsSliderProps) => {
         <Box sx={sxEmbla}>
           <Box sx={sxEmblaContainer}>
             <Box
-              sx={{ ...sxEmblaSlide, mx: "auto" }}
+              sx={{ ...sxEmblaSlide, mx: "auto !important" }}
               onClick={() => handleOpenFullscreen(0)}
             >
               <Slide slide={slides[0]} />
@@ -102,6 +102,6 @@ const sxEmblaContainer = {
 
 const sxEmblaSlide = {
   flex: { xs: "0 0 70%", md: "0 0 33%" },
-  mr: { xs: 2, xm: 4 },
+  mr: { xs: 2, sm: 4 },
   cursor: "pointer",
 };

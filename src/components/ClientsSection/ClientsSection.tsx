@@ -1,7 +1,6 @@
-import { Box, Container, Grid } from "@mui/material";
+import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import React from "react";
-import { defaultSectionPadding } from "../../constants/defaultSectionPadding";
 import { useFetch } from "../../hooks/useFetch";
 import { MainText } from "../common/MainText";
 import { Section } from "../common/Section";
@@ -42,6 +41,31 @@ export const ClientsSection = () => {
               </Box>
             </Grid>
           ))}
+
+          <Grid item xs={5} sm={3} md={2}>
+            <Box>
+              <Stack
+                alignItems="center"
+                justifyContent="center"
+                sx={{
+                  border: "1px solid",
+                  borderColor: "secondary.main",
+                  width: "8rem",
+                  height: "8rem",
+                  mx: "auto",
+                  p: 2,
+                }}
+              >
+                <Typography
+                  color="secondary"
+                  textAlign="center"
+                  fontWeight={600}
+                >
+                  Sua marca pode estar aqui
+                </Typography>
+              </Stack>
+            </Box>
+          </Grid>
         </Grid>
       </Box>
     </Section>
