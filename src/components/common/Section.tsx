@@ -4,7 +4,7 @@ import React, { ReactNode } from "react";
 import { defaultSectionPadding } from "../../constants/defaultSectionPadding";
 
 interface ISectionProps {
-  children: ReactNode;
+  children: ReactNode | ReactNode[];
   id: string;
   backgroundColor?: string;
   sx?: SxProps<Theme>;

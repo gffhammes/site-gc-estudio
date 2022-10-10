@@ -6,6 +6,7 @@ import { Button } from "../common/Button";
 import { MainText } from "../common/MainText";
 import { Section } from "../common/Section";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import { MapBackground } from "./MapBackground";
 
 export const ContactSection = () => {
   const { data, fetching } = useFetch<any>("/contato", {
@@ -73,18 +74,7 @@ export const ContactSection = () => {
         </Box>
       </Stack>
 
-      <Box
-        sx={{
-          position: "absolute",
-          height: "100%",
-          width: "100%",
-          top: 0,
-          left: 0,
-          backgroundImage: "url('/images/Mapa.png')",
-          backgroundRepeat: "no-repeat",
-          zIndex: 0,
-        }}
-      />
+      <MapBackground />
     </Section>
   );
 };
