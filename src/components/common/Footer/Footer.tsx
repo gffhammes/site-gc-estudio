@@ -1,11 +1,12 @@
 import { Box, Container, Stack, Typography } from "@mui/material";
 import React from "react";
-import { Button } from "./Button";
-import { Logo } from "./Logo";
+import { Button } from "../Button";
+import { Logo } from "../Logo";
 import PhoneEnabledOutlinedIcon from "@mui/icons-material/PhoneEnabledOutlined";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
-import { useFetch } from "../../hooks/useFetch";
-import { getFormattedPhone } from "../../helpers/getFormattedPhone";
+import { useFetch } from "../../../hooks/useFetch";
+import { getFormattedPhone } from "../../../helpers/getFormattedPhone";
+import { Background } from "./Background";
 
 export const Footer = () => {
   const { data } = useFetch<any>("/dados-empresa");
@@ -17,9 +18,16 @@ export const Footer = () => {
         sx={{
           backgroundColor: "primary.main",
           py: 15,
+          position: "relative",
         }}
       >
-        <Container sx={{ maxWidth: { xs: "27rem", md: "1200px" } }}>
+        <Container
+          sx={{
+            maxWidth: { xs: "27rem", md: "1200px" },
+            position: "relative",
+            zIndex: 1,
+          }}
+        >
           <Stack
             direction={{ xs: "column", md: "row" }}
             justifyContent="space-between"
@@ -73,6 +81,8 @@ export const Footer = () => {
             </Stack>
           </Stack>
         </Container>
+
+        <Background />
       </Box>
       <Box sx={{ py: 2, backgroundColor: "#192B51" }}>
         <Container>

@@ -1,79 +1,79 @@
-import { Box } from '@mui/material';
-import axios from 'axios';
-import type { NextPage } from 'next';
-import Head from 'next/head';
-import { AboutSection } from '../src/components/AboutSection/AboutSection';
-import { ClientsSection } from '../src/components/ClientsSection/ClientsSection';
-import { Footer } from '../src/components/common/Footer';
-import { Header } from '../src/components/common/Header';
-import { ContactSection } from '../src/components/ContactSection/ContactSection';
+import { Box } from "@mui/material";
+import axios from "axios";
+import type { NextPage } from "next";
+import Head from "next/head";
+import { AboutSection } from "../src/components/AboutSection/AboutSection";
+import { ClientsSection } from "../src/components/ClientsSection/ClientsSection";
+import { Footer } from "../src/components/common/Footer/Footer";
+import { Header } from "../src/components/common/Header";
+import { ContactSection } from "../src/components/ContactSection/ContactSection";
 import {
-	HeroSection,
-	IHeroData,
-} from '../src/components/HeroSection/HeroSection';
-import { ProjectsSection } from '../src/components/ProjectsSection/ProjectsSection';
-import { ServicesSection } from '../src/components/ServicesSection/ServicesSection';
+  HeroSection,
+  IHeroData,
+} from "../src/components/HeroSection/HeroSection";
+import { ProjectsSection } from "../src/components/ProjectsSection/ProjectsSection";
+import { ServicesSection } from "../src/components/ServicesSection/ServicesSection";
 
 interface IHomeProps {
-	pageTitle: string;
-	pageDescription: string;
-	heroData: IHeroData;
+  pageTitle: string;
+  pageDescription: string;
+  heroData: IHeroData;
 }
 
 const Home: NextPage<IHomeProps> = ({
-	pageTitle,
-	pageDescription,
-	heroData,
+  pageTitle,
+  pageDescription,
+  heroData,
 }) => {
-	return (
-		<Box sx={{ height: '100%', width: '100%' }}>
-			<Head>
-				<title>{pageTitle}</title>
-				<meta name="description" content={pageDescription} />
-			</Head>
+  return (
+    <Box sx={{ height: "100%", width: "100%" }}>
+      <Head>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+      </Head>
 
-			<Header />
+      <Header />
 
-			<Box component="main" sx={{ height: '100%', width: '100%' }}>
-				<HeroSection heroData={heroData} />
-				<AboutSection />
-				<ServicesSection />
-				<ProjectsSection />
-				<ClientsSection />
-				<ContactSection />
-				<Footer />
-			</Box>
-		</Box>
-	);
+      <Box component="main" sx={{ height: "100%", width: "100%" }}>
+        <HeroSection heroData={heroData} />
+        <AboutSection />
+        <ServicesSection />
+        <ProjectsSection />
+        <ClientsSection />
+        <ContactSection />
+        <Footer />
+      </Box>
+    </Box>
+  );
 };
 
 export const getServerSideProps = async () => {
-	const pageTitle = 'GC Estúdio';
-	const pageDescription = 'Lorem ipsum';
+  const pageTitle = "GC Estúdio";
+  const pageDescription = "Lorem ipsum";
 
-	const fetchedData = await axios
-		.get('https://gc-estudio.herokuapp.com/api/hero', {
-			params: {
-				populate: '*',
-			},
-		})
-		.then((res) => res.data.data.attributes);
+  const fetchedData = await axios
+    .get("https://gc-estudio.herokuapp.com/api/hero", {
+      params: {
+        populate: "*",
+      },
+    })
+    .then((res) => res.data.data.attributes);
 
-	const heroData: IHeroData = {
-		h1: fetchedData.h1,
-		backgroundImageUrl: fetchedData.imagemFundo.data.attributes.url,
-		buttonText: fetchedData.textoBotao,
-	};
+  const heroData: IHeroData = {
+    h1: fetchedData.h1,
+    backgroundImageUrl: fetchedData.imagemFundo.data.attributes.url,
+    buttonText: fetchedData.textoBotao,
+  };
 
-	const props = {
-		pageTitle,
-		pageDescription,
-		heroData,
-	};
+  const props = {
+    pageTitle,
+    pageDescription,
+    heroData,
+  };
 
-	return {
-		props,
-	};
+  return {
+    props,
+  };
 };
 
 export default Home;
