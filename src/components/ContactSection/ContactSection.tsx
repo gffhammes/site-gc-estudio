@@ -15,12 +15,17 @@ export const ContactSection = () => {
   });
 
   return (
-    <Section id="contato" backgroundColor="secondary.main">
+    <Section
+      id="contato"
+      backgroundColor="secondary.main"
+      sx={{ position: "relative" }}
+    >
       <Stack
         direction={{ xs: "column", sm: "row" }}
         spacing={10}
         alignItems="center"
         justifyContent="space-between"
+        sx={{ position: "relative", zIndex: 1 }}
       >
         <Box
           sx={{
@@ -55,7 +60,7 @@ export const ContactSection = () => {
             position: "relative",
             width: "100%",
             maxWidth: { xs: "27rem", md: "unset" },
-            aspectRatio: "1 / 1",
+            aspectRatio: "1.2 / 1",
             flexBasis: "50%",
           }}
         >
@@ -67,6 +72,19 @@ export const ContactSection = () => {
           />
         </Box>
       </Stack>
+
+      <Box
+        sx={{
+          position: "absolute",
+          height: "100%",
+          width: "100%",
+          top: 0,
+          left: 0,
+          backgroundImage: "url('/images/Mapa.png')",
+          backgroundRepeat: "no-repeat",
+          zIndex: 0,
+        }}
+      />
     </Section>
   );
 };
