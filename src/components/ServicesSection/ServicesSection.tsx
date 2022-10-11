@@ -24,6 +24,7 @@ export const ServicesSection = () => {
           title={data?.h2}
           text={data?.textoPrincipal}
           align="center"
+          dashWidth="large"
           marginBottom
         />
         <Grid container spacing={2}>

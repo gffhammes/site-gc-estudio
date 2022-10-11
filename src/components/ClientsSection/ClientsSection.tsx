@@ -20,7 +20,12 @@ export const ClientsSection = () => {
       sx={{ position: "relative" }}
     >
       <Stack sx={{ position: "relative", zIndex: 1 }}>
-        <MainText title={data?.h2} text={data?.textoPrincipal} align="center" />
+        <MainText
+          title={data?.h2}
+          text={data?.textoPrincipal}
+          align="center"
+          dashWidth="large"
+        />
         <Box sx={{ mt: 5 }}>
           <Grid
             container

@@ -33,12 +33,7 @@ export const ContactSection = () => {
             flexBasis: "50%",
           }}
         >
-          <MainText
-            title={data?.h2}
-            color="white.main"
-            dashPosition="top"
-            marginBottom
-          />
+          <MainText title={data?.h2} color="white.main" marginBottom />
 
           <Stack spacing={4}>
             <Typography color="#fff">

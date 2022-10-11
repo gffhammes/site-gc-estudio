@@ -45,7 +45,12 @@ export const ProjectsSection = () => {
 
   return (
     <Section id="projetos">
-      <MainText title={data?.h2} text={data?.textoPrincipal} align="center" />
+      <MainText
+        title={data?.h2}
+        text={data?.textoPrincipal}
+        align="center"
+        dashWidth="large"
+      />
 
       <Box sx={{ mt: 4 }}>
         {md && (
