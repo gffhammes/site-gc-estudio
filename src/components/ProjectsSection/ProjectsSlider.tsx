@@ -15,14 +15,16 @@ export const ProjectsSlider = ({ slides }: IProjectsSliderProps) => {
     loop: true,
     draggable: false,
   });
-  const [fullscreenIndex, setFullscreenIndex] = useState<number | null>(null);
+  const [fullscreenIndex, setFullscreenIndex] = useState<number>(0);
+  const [openFullscreen, setOpenFullscreen] = useState<boolean>(false);
 
   const handleOpenFullscreen = (index: number) => {
+    setOpenFullscreen(true);
     setFullscreenIndex(index);
   };
 
   const handleCloseFullscreen = () => {
-    setFullscreenIndex(null);
+    setOpenFullscreen(false);
   };
 
   const scrollPrev = useCallback(() => {
@@ -52,10 +54,10 @@ export const ProjectsSlider = ({ slides }: IProjectsSliderProps) => {
         </Box>
 
         <FullscreenPhoto
-          open={fullscreenIndex !== null}
+          open={openFullscreen}
           handleClose={handleCloseFullscreen}
-          projectName={slides[fullscreenIndex ?? 0]?.nome}
-          photoSrc={slides[fullscreenIndex ?? 0]?.telaCheia.data.attributes.url}
+          projectName={slides[fullscreenIndex]?.nome}
+          photoSrc={slides[fullscreenIndex]?.telaCheia.data.attributes.url}
         />
       </>
     );
@@ -82,10 +84,10 @@ export const ProjectsSlider = ({ slides }: IProjectsSliderProps) => {
       </Box>
 
       <FullscreenPhoto
-        open={fullscreenIndex !== null}
+        open={openFullscreen}
         handleClose={handleCloseFullscreen}
-        projectName={slides[fullscreenIndex ?? 0]?.nome}
-        photoSrc={slides[fullscreenIndex ?? 0]?.telaCheia.data.attributes.url}
+        projectName={slides[fullscreenIndex]?.nome}
+        photoSrc={slides[fullscreenIndex]?.telaCheia.data.attributes.url}
       />
     </>
   );
