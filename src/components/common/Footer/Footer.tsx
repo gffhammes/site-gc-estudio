@@ -7,9 +7,16 @@ import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import { useFetch } from "../../../hooks/useFetch";
 import { getFormattedPhone } from "../../../helpers/getFormattedPhone";
 import { Background } from "./Background";
+import { Copyright } from "./Copyright";
+import Image from "next/image";
 
 export const Footer = () => {
-  const { data } = useFetch<any>("/dados-empresa");
+  const { data: contactData } = useFetch<any>("/dados-empresa");
+  const { data: footerData } = useFetch<any>("/rodape", {
+    params: {
+      populate: ["links", "links.icone"],
+    },
+  });
 
   return (
     <>
@@ -34,7 +41,37 @@ export const Footer = () => {
             spacing={8}
             sx={{ color: "white.main" }}
           >
-            <Logo size="lg" />
+            <Box sx={{ width: "fit-content" }}>
+              <Logo size="lg" />
+
+              <Stack
+                direction="row"
+                justifyContent="space-between"
+                sx={{ mt: 4 }}
+              >
+                {footerData?.links?.map((link: any) => (
+                  <Box
+                    key={link.titulo}
+                    component="a"
+                    href={link.link}
+                    target="_blank"
+                    sx={{
+                      position: "relative",
+                      height: "1rem",
+                      width: "1.5rem",
+                      cursor: "pointer",
+                    }}
+                  >
+                    <Image
+                      src={link.icone?.data.attributes.url}
+                      alt={link.titulo}
+                      layout="fill"
+                    />
+                  </Box>
+                ))}
+              </Stack>
+            </Box>
+
             <Stack spacing={3}>
               <Typography fontSize={20} fontWeight={600}>
                 Entre em contato
@@ -42,7 +79,7 @@ export const Footer = () => {
 
               <Stack spacing={2}>
                 <a
-                  href={`tel:${data?.whatsapp}`}
+                  href={`tel:${contactData?.whatsapp}`}
                   style={{ width: "fit-content" }}
                 >
                   <Stack
@@ -53,12 +90,12 @@ export const Footer = () => {
                   >
                     <PhoneEnabledOutlinedIcon />
                     <Typography>
-                      {getFormattedPhone(data?.whatsapp || "")}
+                      {getFormattedPhone(contactData?.whatsapp || "")}
                     </Typography>
                   </Stack>
                 </a>
 
-                <a href={`mailto:	${data?.email}`}>
+                <a href={`mailto:	${contactData?.email}`}>
                   <Stack
                     alignItems="center"
                     direction="row"
@@ -66,7 +103,7 @@ export const Footer = () => {
                     sx={{ color: "rgba(255,255,255,.4)" }}
                   >
                     <MailOutlineIcon />
-                    <Typography>{data?.email}</Typography>
+                    <Typography>{contactData?.email}</Typography>
                   </Stack>
                 </a>
               </Stack>
@@ -84,13 +121,7 @@ export const Footer = () => {
 
         <Background />
       </Box>
-      <Box sx={{ py: 2, backgroundColor: "#192B51" }}>
-        <Container>
-          <Typography textAlign="center" color="white.main">
-            © 2022 GC Estúdio. Todos os Direitos Reservados.
-          </Typography>
-        </Container>
-      </Box>
+      <Copyright />
     </>
   );
 };
