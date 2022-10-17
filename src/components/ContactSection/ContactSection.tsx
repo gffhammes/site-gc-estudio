@@ -36,10 +36,10 @@ export const ContactSection = () => {
           <MainText title={data?.h2} color="white.main" marginBottom />
 
           <Stack spacing={4}>
-            <Typography color="#fff">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-              mauris quam, dapibus et iaculis ac, aliquet ac erat.
-            </Typography>
+            <Typography
+              color="#fff"
+              dangerouslySetInnerHTML={{ __html: data?.texto }}
+            />
 
             <Button
               color="primary"
