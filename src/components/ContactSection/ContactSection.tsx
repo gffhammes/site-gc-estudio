@@ -15,6 +15,8 @@ export const ContactSection = () => {
     },
   });
 
+  if (!data) return null;
+
   return (
     <Section
       id="contato"
@@ -41,13 +43,20 @@ export const ContactSection = () => {
               dangerouslySetInnerHTML={{ __html: data?.texto }}
             />
 
-            <Button
-              color="primary"
-              variant="contained"
-              startIcon={<WhatsAppIcon />}
+            <a
+              href={data?.linkBotao}
+              target="_blank"
+              rel="noreferrer"
+              style={{ width: "fit-content" }}
             >
-              Fale conosco
-            </Button>
+              <Button
+                color="primary"
+                variant="contained"
+                startIcon={<WhatsAppIcon />}
+              >
+                {data?.textoBotao}
+              </Button>
+            </a>
           </Stack>
         </Box>
 

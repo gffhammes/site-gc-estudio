@@ -18,6 +18,10 @@ export const Footer = () => {
     },
   });
 
+  console.log(footerData);
+
+  if (!footerData) return null;
+
   return (
     <>
       <Box
@@ -110,11 +114,13 @@ export const Footer = () => {
             </Stack>
             <Stack spacing={3}>
               <Typography fontSize={20} fontWeight={600}>
-                Quer evoluir sua marca?{" "}
+                {footerData.tituloBotao}
               </Typography>
-              <Button color="secondary" variant="contained">
-                Iniciar um projeto
-              </Button>
+              <a href={footerData.linkBotao} target="_blank" rel="noreferrer">
+                <Button color="secondary" variant="contained">
+                  {footerData.textoBotao}
+                </Button>
+              </a>
             </Stack>
           </Stack>
         </Container>
