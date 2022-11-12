@@ -18,8 +18,6 @@ export const Footer = () => {
     },
   });
 
-  console.log(footerData);
-
   if (!footerData) return null;
 
   return (
